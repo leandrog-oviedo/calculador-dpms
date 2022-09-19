@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
     <title>Calculador DPMS</title>
 </head>
 <h1>Calculador automático de demanda de potencia máxima simultánea</h1>
-<p>La idea del proyecto es hacer un calculador para la demanda máxima simultánea de potencia de una vivienda unifamiliar con alimentación de baja tensión.</p>
+<p>La idea del proyecto es hacer un calculador para la demanda máxima simultánea de potencia de una vivienda unifamiliar
+    con alimentación de baja tensión.</p>
 <p>Las funcionalidades deben ser:</p>
 <ul>
     <li>Calcular la superficie límite de aplicación (SLA)</li>
@@ -16,9 +19,21 @@
     <li>Calcular los calibres de protecciones a utilizar en cada circuito</li>
     <li>Calcular la sección de cable a usar en cada circuito</li>
     <li>Informar la potencia total en kW, para hacer el pedido a la distribuidora.</li>
-
 </ul>
+<div>
+    <h2>Empezemos a calcular la superficie de la vivienda a trabajar</h2>
+    <p>Colocá acá la cantidad de metros cuadrados cubiertos</p>
+    <input id="sCubierta" placeholder="Cantidad expresada en m2" type="number">
+    <p>Colocá acá la cantidad de metros cuadrados semicubiertos</p>
+    <input id="sSemiCubierta" type="number">
+    <button id="obtener">click</button>
+    <p>La superficie total es <span id="sTotal"></span>m2</p>
+    <h2>Circuitos a usar</h2>
+    <p id="cantCircuitos"></p>
+</div>
+
 <body>
     <script src="./main.js"></script>
 </body>
+
 </html>
