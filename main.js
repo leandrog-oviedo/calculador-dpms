@@ -4,8 +4,8 @@ let supSemiCubiertaNumero;
 let supTotal;
 const coefSemi = 0.5;
 let click = document.getElementById("obtener");
-let supCubierta = document.getElementById("sCubierta");
-let supSemiCubierta = document.getElementById("sSemiCubierta");
+let supCubierta = document.getElementById("roomCoveredSurface");
+let supSemiCubierta = document.getElementById("roomSemicoveredSurface");
 let sGradoElec = document.getElementById("sTotal");
 let sTotal = document.getElementById("sTotal");
 let gradoElectrificacionAMostrar = document.getElementById("gradoElectrificacion")
@@ -22,7 +22,9 @@ obtener.onclick = () => {
     actualizarSuperficieTotal();
     gradoElectrificacion();
     cantidadDeCircuitosAUsar();
-};
+    hacerAmbientes();
+}
+
 //Declaro la funcion para actualizar la superficie total en el DOM
 function actualizarSuperficieTotal() {
     sTotal.innerText = supTotal;
@@ -41,7 +43,7 @@ function gradoElectrificacion() {
         gradoElec = 'superior'
     }
     gradoElectrificacionAMostrar.innerText = gradoElec;
-    
+
 }
 
 function cantidadDeCircuitosAUsar() {
@@ -67,13 +69,17 @@ function cantidadDeCircuitosAUsar() {
     }
 }
 
-/* let entrada = prompt("Ingrese un ambiente de la vivienda, para finalizar ingrese ESC");
+
+let roomsName = document.getElementById("roomName");
+let roomCoveredSurface = document.getElementById("roomCoveredSurface");
+let roomSemicoveredSurface = document.getElementById("roomSemicoveredSurface");
+
 const ambientes = [];
-while (entrada != 'ESC') {
-    ambientes.push(entrada);
-    entrada = prompt("Ingrese otro ambiente de la vivienda, para finalizar ingrese ESC");
+
+function hacerAmbientes() {
+    ambientes.push(roomsName);
+
+    for (let i = 0; i < ambientes.length; i++) {
+        console.log("Ambiente " + i + ' ' + ambientes[roomsName.value]);
+    }
 }
-for (let i = 0; i < ambientes.length; i++) {
-    alert("Ambiente "+ i + ' ' + ambientes[i]);
-} 
- */
