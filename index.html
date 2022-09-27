@@ -30,24 +30,61 @@
     </section>
     <section>
         <h2 class="text-center">Empecemos a calcular la superficie de la vivienda a trabajar</h2>
-        <div id="room-form" class="imput-group container col-md-12" action="">
-            <p class="text-center">Ingresa los ambientes de la vivienda uno a uno, completa la informacion y hace click
-                en el boton agregar
-            </p>
-            <form id="roomsForm" action="">
-                <p class="form-label col-md-3">Ingresa el nombre del ambiente a agregar</p>
-                <input id="roomName" class="col-md-3" placeholder="Nombre del ambiente" type="text">
-                <p>Ingresa la superficie <span class="fw-bolder">cubierta</span> Cubierta del ambiente, expresada en m2
-                </p>
-                <input id="roomCoveredSurface" class="col-md-3" value="0" step="0.01" type="number">
-                <p>Ingresa la superficie <span class="fw-bolder">semi cubiertos</span> del ambiente, expresada en m2</p>
-                <input id="roomSemicoveredSurface" class="col-md-3" value="0" step="0.01" type="number">
-                <input type="submit" value="Agregar ambiente" class="btn btn-success btn-block">
-        </div>
+        <p class="text-center">Ingresa los ambientes de la vivienda uno a uno, completa la informacion y hace click
+            en el boton agregar
+        </p>
+        <form id="roomsForm" class="container row g-1" action="">
+
+            <div class="col col-md-4">
+                <p class="form-label ">Ingresa el nombre del ambiente a agregar</p>
+                <input id="roomName" class="form-control" placeholder="Nombre del ambiente" type="text">
+            </div>
+
+            <div class="col-md-3">
+                <p class="form-label">Ingresa la superficie <span class="fw-bolder">cubierta</span> Cubierta del
+                    ambiente, expresada en m2</p>
+                <input id="roomCoveredSurface" class="form-control col-md1 " value="0" step="0.01" min="0"
+                    type="numeric">
+            </div>
+
+            <div class="col-md-3">
+                <p class="form-label">Ingresa la superficie <span class="fw-bolder">semi cubiertos</span> del ambiente,
+                    expresada en m2</p>
+                <input id="roomSemicoveredSurface" class="form-control col-md-1" value="0" step="0.01" min="0"
+                    type="numeric">
+            </div>
+
+            <h4>Ingresa la cantida de bocas correspondientes a cada circuito, si no estas usando un circuito dejalo en
+                0.
+            </h4>
+            <!-- <div class="row ">
+                <p class="form-label col-md-3">IUG 1</p>
+                <input id="iug-1" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
+                <p class="form-label">IUG 2</p>
+                <input id="iug-2" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
+                <p class="form-label">IUG 3</p>
+                <input id="iug-3" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
+                <p class="form-label">TUG 1</p>
+                <input id="tug-1" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
+                <p class="form-label">TUG 2</p>
+                <input id="tug-2" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
+                <p class="form-label">TUG 3</p>
+                <input id="tug-3" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
+                <p class="form-label">IUE 1</p>
+                <input id="iue-1" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
+                <p class="form-label">IUE 2</p>
+                <input id="iue-2" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
+                <p class="form-label">TUE 1</p>
+                <input id="tue-1" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
+                <p class="form-label">TUE 2</p>
+                <input id="tue-2" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
+            </div> -->
+            <input type="submit" value="Agregar ambiente" class="btn btn-success btn-block">
+            <button id="getRooms" class="btn btn-danger">Recuperar</button>
         </form>
         <div>
             <h3 class="text-center">Los ambientes agregados serán listados aqui.</h3>
-            <table id="roomsTable">
+            <table id="roomsTable" class="table table-dark table-striped table">
                 <thead>
                     <th>Nombre ambiente</th>
                     <th>Superficie cubierta</th>
@@ -55,10 +92,10 @@
                 </thead>
             </table>
             <button id="calculate" class="btn btn-danger">Calcular</button>
-        <p>La superficie total es <span id="sTotal"></span>m2</p>
-        <p>El grado de electrificacion es <span id="gradoElectrificacion"></span></p>
-        <h2>Circuitos a usar</h2>
-        <p id="cantCircuitos"></p>
+            <p>La superficie total es <span id="sTotal"></span>m2</p>
+            <p>El grado de electrificacion es <span id="gradoElectrificacion"></span></p>
+            <h2>Circuitos a usar</h2>
+            <p id="cantCircuitos"></p>
     </section>
 
     <script src="./app.js"></script>

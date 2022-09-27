@@ -1,5 +1,6 @@
 //Creo un array donde voy a guardar los distintos ambientes de la vivienda.
 const rooms = [];
+let roomId = 0;
 let roomName1;
 let roomCSurface;
 let roomScsurface;
@@ -10,24 +11,27 @@ let gradoElec;
 let sGradoElec = document.getElementById("sTotal");
 let gradoElectrificacionAMostrar = document.getElementById("gradoElectrificacion")
 let mostrarCantidadCircuitos = document.getElementById("cantCircuitos");
-const calculate = document.getElementById('calculate')
+const calculate = document.getElementById('calculate');
+const saveRoom = document.getElementById('saveRooms')
+const getRoom = document.getElementById('getRooms')
 
 
 //Leo desde el html los datos a ingresar al array de ambientes y los pusheo.
 const createRooms = () => {
+    roomId ++ ;
     const roomName = document.getElementById('roomName');
     const roomCoveredSurface = document.getElementById('roomCoveredSurface');
     const roomSemicoveredSurface = document.getElementById('roomSemicoveredSurface');
     roomName1 = roomName.value;
     roomCSurface = parseFloat(roomCoveredSurface.value);
     roomScsurface = parseFloat(roomSemicoveredSurface.value);
-
     rooms.push({
+        roomId,
         roomName1,
         roomCSurface,
         roomScsurface
     });
-
+    saveRoomStorage(rooms);
 }
 
 const getTotalSurface = () => {
@@ -41,9 +45,9 @@ const renderRooms = () => {
     const tableRooms = document.getElementById('roomsTable');
     let tableBody = document.createElement('tbody');
 
-    rooms.forEach (room =>{
+    rooms.forEach(room => {
         tableBody.innerHTML = "";
-        //console.log(roomName1,roomCSurface,roomScsurface);
+        
         let row = document.createElement('tr');
 
         let td = document.createElement('td');
@@ -58,9 +62,17 @@ const renderRooms = () => {
         td.innerText = room.roomScsurface;
         row.appendChild(td);
 
+        td = document.createElement('td');
+        td.innerHTML = `<button id="${room.roomId}" class="btn btn-danger">x</button>`;
+        row.appendChild(td);
+
         tableBody.appendChild(row);
     })
     tableRooms.appendChild(tableBody);
+
+    tableRooms.addEventListener('click', (e) => {
+        eraseRoom(e.target.roomId);
+    });
 };
 
 // Declaro la función para conocer el grado de electrificacion de la vivienda
@@ -101,15 +113,41 @@ function cantidadDeCircuitosAUsar() {
     }
 }
 
+const saveRoomStorage = (rooms) => {
+    localStorage.setItem('room', JSON.stringify(rooms));
+};
+
+const retriveRooms = () =>{
+    const storedRooms = JSON.parse(localStorage.getItem('rooms'));
+    return storedRooms;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('rooms')) {
+        rooms = retriveRooms();
+        renderRooms(rooms);
+    }
+    console.log(rooms);
+})
 
 
+const eraseRoom = (roomId) =>{
+    console.log(rooms.roomId);
+    rooms.forEach((room,id)=>{
+        if(room.roomId === roomId){
+            rooms.splice(id,1);
+        }
+    })
+
+}
 
 roomsForm.addEventListener('submit', (e) => {
     e.preventDefault();
     createRooms();
     renderRooms();
+
     document.getElementById('roomsForm').reset();
 });
+
 
 calculate.onclick = () => {
     getTotalSurface();
