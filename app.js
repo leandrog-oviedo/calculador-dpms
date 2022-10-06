@@ -5,12 +5,13 @@ let totalCoveredSurface;
 let totalSemicoveredSurface;
 let totalSurface;
 let gradoElec;
-let gradoElectrificacionAMostrar = document.getElementById("gradoElectrificacion");
-let mostrarCantidadCircuitos = document.getElementById("cantCircuitos");
+const gradoElectrificacionAMostrar = document.getElementById("gradoElectrificacion");
+const mostrarCantidadCircuitos = document.getElementById("cantCircuitos");
 const calculate = document.getElementById("calculate");
 const saveRoom = document.getElementById("saveRooms");
 const recuperar = document.getElementById("getRooms");
 let recuperarState = false;
+
 
 //Leo desde el html los datos a ingresar al array de ambientes y los pusheo.
 saveRoom.addEventListener("click", () => {
@@ -25,13 +26,30 @@ saveRoom.addEventListener("click", () => {
         roomSemicoveredSurface,
     });
     localStorage.setItem("room", JSON.stringify(rooms));
-    roomName.value = "";
-    roomCoveredSurface.value = "0";
-    roomSemicoveredSurface.value = "0";
 
     recuperarState = true;
-    
+
     renderRooms();
+
+    Toastify({
+
+        text: `${roomName} agregado exitosamente`,
+
+        duration: 1500,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        
+        style: {
+            background: "linear-gradient(to right, #669663, #29C920)",
+            color:"#000000",
+            radius:"20px"
+        },
+
+
+    }).showToast();
+
+
 });
 
 const getTotalSurface = () => {
@@ -52,7 +70,7 @@ const renderRooms = () => {
 
         let row = document.createElement("tr");
         let td = document.createElement("td");
-        
+
         td.innerText = room.roomName;
         row.appendChild(td);
 
@@ -123,8 +141,7 @@ recuperar.addEventListener("click", renderRooms);
 
 roomsForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    /* createRooms();
-    renderRooms(); */
+    roomsForm.reset();
 });
 
 calculate.onclick = () => {

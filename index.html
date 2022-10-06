@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/stylesheet.css">
     <title>Calculador DPMS</title>
 </head>
@@ -33,11 +34,11 @@
         <p class="text-center">Ingresa los ambientes de la vivienda uno a uno, completa la informacion y hace click
             en el boton agregar
         </p>
-        <form id="roomsForm" class="container row g-1" action="">
+        <form id="roomsForm" class="container col-md-12 row g-1 border border-2 space" action="">
 
-            <div class="col col-md-4">
+            <div class="col-md-4 mb-2">
                 <p class="form-label ">Ingresa el nombre del ambiente a agregar</p>
-                <input id="roomName" class="form-control" placeholder="Nombre del ambiente" type="text">
+                <input id="roomName" class="form-control down-space" placeholder="Nombre del ambiente" type="text">
             </div>
 
             <div class="col-md-3">
@@ -57,30 +58,32 @@
             <h4>Ingresa la cantida de bocas correspondientes a cada circuito, si no estas usando un circuito dejalo en
                 0.
             </h4>
-            <!-- <div class="row ">
-                <p class="form-label col-md-3">IUG 1</p>
-                <input id="iug-1" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
-                <p class="form-label">IUG 2</p>
-                <input id="iug-2" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
-                <p class="form-label">IUG 3</p>
-                <input id="iug-3" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
-                <p class="form-label">TUG 1</p>
-                <input id="tug-1" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
-                <p class="form-label">TUG 2</p>
-                <input id="tug-2" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
-                <p class="form-label">TUG 3</p>
-                <input id="tug-3" class="form-control col-md-1" value="0" min="0" max="15" type="numeric">
-                <p class="form-label">IUE 1</p>
-                <input id="iue-1" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
-                <p class="form-label">IUE 2</p>
-                <input id="iue-2" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
-                <p class="form-label">TUE 1</p>
-                <input id="tue-1" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
-                <p class="form-label">TUE 2</p>
-                <input id="tue-2" class="form-control col-md-1" value="0" min="0" max="12" type="numeric">
-            </div> -->
-            <button id="saveRooms" class="btn btn-success">Agregar Ambiente<button>
-            <button id="getRooms" class="btn btn-danger">Recuperar</button>
+            <div class="row ">
+                <p class="form-label imput-small">IUG 1</p>
+                <input id="iug-1" class="form-control imput-small" value="0" min="0" max="15" type="numeric">
+                <p class="form-label imput-small">IUG 2</p>
+                <input id="iug-2" class="form-control imput-small" value="0" min="0" max="15" type="numeric">
+                <p class="form-label imput-small">IUG 3</p>
+                <input id="iug-3" class="form-control imput-small" value="0" min="0" max="15" type="numeric">
+                <p class="form-label imput-small">TUG 1</p>
+                <input id="tug-1" class="form-control imput-small" value="0" min="0" max="15" type="numeric">
+                <p class="form-label imput-small">TUG 2</p>
+                <input id="tug-2" class="form-control imput-small" value="0" min="0" max="15" type="numeric">
+                <p class="form-label imput-small">TUG 3</p>
+                <input id="tug-3" class="form-control imput-small" value="0" min="0" max="15" type="numeric">
+                <p class="form-label imput-small">IUE 1</p>
+                <input id="iue-1" class="form-control imput-small" value="0" min="0" max="12" type="numeric">
+                <p class="form-label imput-small">IUE 2</p>
+                <input id="iue-2" class="form-control imput-small" value="0" min="0" max="12" type="numeric">
+                <p class="form-label imput-small">TUE 1</p>
+                <input id="tue-1" class="form-control imput-small" value="0" min="0" max="12" type="numeric">
+                <p class="form-label imput-small">TUE 2</p>
+                <input id="tue-2" class="form-control imput-small" value="0" min="0" max="12" type="numeric">
+            </div>
+            <div class="row justify-content-end">
+            <button id="saveRooms" class="col btn btn-success col-md-1 button">+</button>
+            <button id="getRooms" class="col btn btn-danger col-md-1 button">Recuperar</button>
+        </div>
         </form>
         <div>
             <h3 class="text-center">Los ambientes agregados serán listados aqui.</h3>
@@ -102,6 +105,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 

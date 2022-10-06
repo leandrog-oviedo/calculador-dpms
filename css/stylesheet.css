@@ -11,3 +11,17 @@ body {
     
     font-family: monospace;
 }
+
+.imput-small{
+    max-width: 8rem;
+}
+.space{
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+.down-space{
+    margin-top: 2rem;
+}
+.button{
+    margin: 1rem;
+}
