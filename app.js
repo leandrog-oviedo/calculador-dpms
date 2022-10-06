@@ -43,7 +43,7 @@ saveRoom.addEventListener("click", () => {
         style: {
             background: "linear-gradient(to right, #669663, #29C920)",
             color:"#000000",
-            radius:"20px"
+            
         },
 
 
